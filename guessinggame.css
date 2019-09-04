@@ -1,5 +1,44 @@
+/* Andy Sokolowski    2019/09/04     guessinggame.css */
+body {
+  font-size: 23px;
+  color: #a3a3c2;
+  background-color: #47476b;
+  font-family: Optima, Arial, sans-serif;
+}
+
 h1 {
-  color: green;
-  background-color: darkgray;
+  font-family: Palatino, "Times New Roman", serif;
+  width: 670px;
   text-decoration: underline;
+  padding: 15px 0px;
+}
+
+h3 {
+  color: #c2c2d6;
+  font-family: "Trebuchet MS";
+}
+
+#guess-box {
+  text-align: center;
+  font-size: 23px;
+  height: 60px;
+  width: 70px;
+}
+
+p button {
+  font-size: 23px;
+  height: 60px;
+  width: 185px;
+}
+
+h1, #guess-box, p button {
+  color: #006622;
+  background-color: #8585ad;
+  font-weight: bold;
+}
+
+#guessbox, p button {
+  margin-left: 15px;
+  margin-bottom: 15px;
+  font-family: "Andale Mono", "Courier New", monospace;
 }

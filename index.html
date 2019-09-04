@@ -1,11 +1,30 @@
 <!DOCTYPE html>
+<!--  Andy Sokolowski      2019/09/04     index.html (guessing game) -->
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="guessinggame.css" />
     <title>Guessing Game</title>
   </head>
   <body>
-    <h1>Guessing game</h1>
+    <h1>Guessing Game</h1>
+    <h3>Previous Guesses:</h3>
+    <p>
+      <ul>
+        <li>guess one prints here</li>
+        <li>guess two prints here</li>
+        <li>guess three prints here</li>
+        <li>guess four prints here</li>
+        <li>final guess prints here?</li>
+      </ul>
+    </p>
+    <p>
+      <h3>Remaining guesses message goes here</h3>
+    </p>
+    <p>
+      <input type="text" id="guess-box" maxlength="3"/><button>Submit Guess
+          </button><button>Play Again</button><button id="hint">Hint</button>
+    </p>
   </body>
 </html>
