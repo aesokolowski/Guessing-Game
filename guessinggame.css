@@ -1,4 +1,5 @@
 /* Andy Sokolowski    2019/09/04     guessinggame.css */
+
 body {
   font-size: 23px;
   color: #a3a3c2;
@@ -15,29 +16,28 @@ h1 {
 
 h3 {
   color: #c2c2d6;
-  font-family: "Trebuchet MS";
+  font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
 #guess-box {
   text-align: center;
-  font-size: 23px;
   height: 60px;
   width: 70px;
 }
 
-p button {
-  font-size: 23px;
+button {
   height: 60px;
   width: 185px;
 }
 
-h1, #guess-box, p button {
+h1, #guess-box, button {
   color: #006622;
   background-color: #8585ad;
   font-weight: bold;
 }
 
-#guessbox, p button {
+#guessbox, button {
+  font-size: 23px;
   margin-left: 15px;
   margin-bottom: 15px;
   font-family: "Andale Mono", "Courier New", monospace;
