@@ -9,11 +9,13 @@ const LOW_BOUND = 1,
 //  message constants:
 const YOU_WIN = 'You Win!',
       ALREADY = 'You have already guessed that number.',
-      YOU_LOSE = 'You Lose',
-      CLOSE = 'You\'re burining up!',
+      YOU_LOSE = 'You Lose.',
+      CLOSE = 'You\'re burning up!',
       FAR = 'You\'re lukewarm.',
       FARTHER = 'You\'re a bit chilly.',
       FARTHEST = 'You\'re ice cold!';
+
+let newGame;
 
 class Game {
   constructor() {
@@ -53,7 +55,7 @@ class Game {
     }
 
     this.pastGuesses.push(this.playersGuess);
-    if (this.pastGuesses.length === 5) {
+    if (this.pastGuesses.length === MAX_GUESSES) {
       return YOU_LOSE;
     }
 
@@ -71,6 +73,11 @@ class Game {
     }
 
     return FARTHEST;
+  }
+
+  provideHint() {
+    return shuffle([this.winningNumber, generateWinningNumber(),
+        generateWinningNumber()]);
   }
 }
 
@@ -92,3 +99,5 @@ function shuffle(arr) {
 
   return arr;
 }
+
+newGame = () => new Game;
