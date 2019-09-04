@@ -1,11 +1,22 @@
 //  Andy Sokolowski      2019/09/04     guessinggame.js
 
+//  error constants:
+const OUT_OF_RANGE = 'That is an invalid guess.';
+//  numeric constants:
+const LOW_BOUND = 1,
+      HIGH_BOUND = 100,
+      MAX_GUESSES = 5;
+//  message constants:
+const YOU_WIN = 'You Win!',
+      ALREADY = 'You have already guessed that number.',
+      YOU_LOSE = 'You Lose',
+      CLOSE = 'You\'re burining up!',
+      FAR = 'You\'re lukewarm.',
+      FARTHER = 'You\'re a bit chilly.',
+      FARTHEST = 'You\'re ice cold!';
+
 class Game {
   constructor() {
-    this.cons = Object.freeze({
-      OUT_OF_RANGE: 'ERROR: number outside of accepted range (1-100, ' +
-                     'inclusive).'
-    });
     this.playersGuess = null;
     this.pastGuesses = [];
     this.winningNumber = generateWinningNumber();
@@ -20,16 +31,51 @@ class Game {
   }
 
   playersGuessSubmission(guessNum) {
-    if (guessNum < 1 || guessNum > 100) {
-      throw this.cons.OUT_OF_RANGE;
+    if (typeof guessNum !== 'number' ||
+        guessNum < LOW_BOUND ||
+        guessNum > HIGH_BOUND) {
+      throw new Error(OUT_OF_RANGE).message;
     }
 
     this.playersGuess = guessNum;
+    return this.checkGuess();
+  }
+
+  checkGuess() {
+    let diff;
+
+    if (this.playersGuess === this.winningNumber) {
+      return YOU_WIN;
+    }
+
+    if (this.pastGuesses.includes(this.playersGuess)) {
+      return ALREADY;
+    }
+
+    this.pastGuesses.push(this.playersGuess);
+    if (this.pastGuesses.length === 5) {
+      return YOU_LOSE;
+    }
+
+    diff = this.difference();
+    if (diff < HIGH_BOUND / 10) {
+      return CLOSE;
+    }
+
+    if (diff < HIGH_BOUND / 4) {
+      return FAR;
+    }
+
+    if (diff < HIGH_BOUND / 2) {
+      return FARTHER;
+    }
+
+    return FARTHEST;
   }
 }
 
 function generateWinningNumber() {
-  return Math.floor(Math.random(100) * 100) + 1;
+  return Math.floor(Math.random(HIGH_BOUND) * HIGH_BOUND) + LOW_BOUND;
 }
 
 //  Yates-Fischer algorithm, found at https://bost.ocks.org/mike/shuffle/
