@@ -29,21 +29,19 @@ function main() {
     guessBox.disabled = true;
   };
   let reset = () => {
-    let guessFields = [guess1, guess2, guess3, guess4];
-
-    guessFields.forEach(field => {
+    [guess1, guess2, guess3, guess4].forEach(field => {
       field.innerHTML = '';
       field.style.display = 'none';
     });
     submitButton.disabled = false;
     hint.disabled = false;
     guessBox.disabled = false;
+    guessBox.value = '';
     msgBar.innerHTML = DEFAULT_MSG;
+    guessBox.focus();
     game = newGame();
   };
-
-  msgBar.innerHTML = DEFAULT_MSG;
-  submitButton.addEventListener('click', () => {
+  let submitClick = () => {
     try {
       msgBar.innerHTML = game.playersGuessSubmission(Number(guessBox.value));
     
@@ -70,7 +68,24 @@ function main() {
       msgBar.innerHTML = e;
       guessBox.value = '';
     }
+
+    guessBox.focus();
+  };
+
+  msgBar.innerHTML = DEFAULT_MSG;
+  guessBox.focus();
+  guessBox.addEventListener('keyup', event => {
+    if (event.key === 'Enter') {
+      submitClick();
+    }
   });
+  submitButton.addEventListener('click', submitClick); 
+  hint.addEventListener('click', () => {
+    msgBar.innerHTML = game.provideHint();
+    hint.disabled = true;
+    guessBox.focus();
+  });
+  newGameButton.addEventListener('click', reset);
 }
 
 main();

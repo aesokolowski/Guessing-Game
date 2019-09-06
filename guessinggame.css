@@ -36,7 +36,7 @@ button {
   width: 185px;
 }
 
-#guessbox:disabled, button:disabled {
+#guess-box:disabled, button:disabled {
   color: #4d4d4d;
   background-color: #a6a6a6;
 }
