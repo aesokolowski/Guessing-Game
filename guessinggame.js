@@ -33,7 +33,7 @@ class Game {
   }
 
   playersGuessSubmission(guessNum) {
-    if (typeof guessNum !== 'number' ||
+    if (guessNum === NaN ||
         guessNum < LOW_BOUND ||
         guessNum > HIGH_BOUND) {
       throw new Error(OUT_OF_RANGE).message;

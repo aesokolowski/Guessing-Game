@@ -9,18 +9,22 @@
   </head>
   <body>
     <h1>Guessing Game</h1>
+
     <h3>Previous Guesses:</h3>
     <ul>
-      <li>guess one prints here</li>
-      <li>guess two prints here</li>
-      <li>guess three prints here</li>
-      <li>guess four prints here</li>
-      <li>final guess prints here?</li>
+      <li id="guess1"></li>
+      <li id="guess2"></li>
+      <li id="guess3"></li>
+      <li id="guess4"></li>
     </ul>
-    <h3>Remaining guesses message goes here</h3>
+    <h3 id="msg-bar">Enter a number and press "submit guess."</h3>
+
     <input type="text" id="guess-box" placeholder="1-100" maxlength="3" />
-    <button>Submit Guess</button>
-    <button>Play Again</button>
-    <button id="hint">Hint</button>
+    <button id="submit-button" type="button">Submit Guess</button>
+    <button id="new-game-button" type="button">Play Again</button>
+    <button id="hint" type="button">Hint</button>
+
+    <script src="guessinggame.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
