@@ -13,7 +13,9 @@ const YOU_WIN = 'You Win!',
       CLOSE = 'You\'re burning up!',
       FAR = 'You\'re lukewarm.',
       FARTHER = 'You\'re a bit chilly.',
-      FARTHEST = 'You\'re ice cold!';
+      FARTHEST = 'You\'re ice cold!',
+      HIGHER = 'Guess higher.',
+      LOWER = 'Guess lower.';
 
 let newGame;
 
@@ -45,6 +47,7 @@ class Game {
 
   checkGuess() {
     let diff;
+    let hiLow;
 
     if (this.playersGuess === this.winningNumber) {
       return YOU_WIN;
@@ -60,19 +63,20 @@ class Game {
     }
 
     diff = this.difference();
+    hiLow = this.isLower() ? HIGHER : LOWER;;
     if (diff < HIGH_BOUND / 10) {
-      return CLOSE;
+      return CLOSE + ' ' + hiLow;
     }
 
     if (diff < HIGH_BOUND / 4) {
-      return FAR;
+      return FAR + ' ' + hiLow;
     }
 
     if (diff < HIGH_BOUND / 2) {
-      return FARTHER;
+      return FARTHER + ' ' + hiLow;
     }
 
-    return FARTHEST;
+    return FARTHEST + ' ' + hiLow;
   }
 
   provideHint() {

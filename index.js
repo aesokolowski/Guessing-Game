@@ -38,7 +38,6 @@ function main() {
     guessBox.disabled = false;
     guessBox.value = '';
     msgBar.innerHTML = DEFAULT_MSG;
-    guessBox.focus();
     game = newGame();
   };
   let submitClick = () => {
