@@ -4,6 +4,7 @@
 function main() {
   const DEFAULT_MSG = 'Enter a number and press "submit guess."';
 
+  let previousGuesses = document.getElementById('previous-guesses');
   let msgBar = document.getElementById('msg-bar');
   let guessBox = document.getElementById('guess-box');
   let submitButton = document.getElementById('submit-button');
@@ -25,7 +26,7 @@ function main() {
   };
   let disableAll = () => {
     submitButton.disabled = true;
-    hint.disabled = true;
+    hintButton.disabled = true;
     guessBox.disabled = true;
   };
   let reset = () => {
@@ -34,9 +35,10 @@ function main() {
       field.style.display = 'none';
     });
     submitButton.disabled = false;
-    hint.disabled = false;
+    hintButton.disabled = false;
     guessBox.disabled = false;
     guessBox.value = '';
+    previousGuesses.style.display = 'none';
     msgBar.innerHTML = DEFAULT_MSG;
     game = newGame();
   };
@@ -46,6 +48,7 @@ function main() {
     
       switch (game.pastGuesses.length) {
         case 1:
+          previousGuesses.style.display = 'block';
           displayGuess(guess1);
           break;
         case 2:
@@ -79,9 +82,9 @@ function main() {
     }
   });
   submitButton.addEventListener('click', submitClick); 
-  hint.addEventListener('click', () => {
+  hintButton.addEventListener('click', () => {
     msgBar.innerHTML = game.provideHint();
-    hint.disabled = true;
+    hintButton.disabled = true;
     guessBox.focus();
   });
   newGameButton.addEventListener('click', reset);
